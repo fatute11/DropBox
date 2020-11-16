@@ -1,0 +1,21 @@
+{
+  "name": "DropBox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "pm2 kill && pm2 start main.js --watch && pm2 logs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fatute11/DropBox.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fatute11/DropBox/issues"
+  },
+  "homepage": "https://github.com/fatute11/DropBox#readme"
+}
