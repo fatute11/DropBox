@@ -1,5 +1,5 @@
-const { verifySignUp } = require("../src/middlewares");
-const controlleur = require("../src/controlleurs/auth.controlleur");
+const { verifySignUp } = require("../middlewares");
+const controlleur = require("../controlleurs/auth.controlleur");
 
 module.exports = function(app) {
   app.use(function(req, res, next) {

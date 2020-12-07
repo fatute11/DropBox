@@ -25,8 +25,8 @@ app.use(routes)
 const db = require("./src/models");
 const Role = db.role;
 // routes
-require('./routes/auth.routes')(app);
-require('./routes/user.routes')(app);
+require('./src/routes/auth.routes')(app);
+require('./src/routes/user.routes')(app);
 
 db.mongoose
   .connect(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`, {
