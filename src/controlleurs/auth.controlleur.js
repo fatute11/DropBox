@@ -1,4 +1,3 @@
-const config = require("../../config/auth");
 const db = require("../models");
 const User = db.user;
 const Role = db.role;
@@ -89,8 +88,8 @@ exports.signin = (req, res) => {
         });
       }
 
-      var token = jwt.sign({ id: user.id }, config.secret, {
-        expiresIn: 86400 // 24 hours
+      var token = jwt.sign({ id: user.id }, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: process.env.ACCESS_TOKEN_LIFE // 24 hours
       });
 
       var authorities = [];
