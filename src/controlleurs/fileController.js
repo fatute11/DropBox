@@ -9,18 +9,20 @@ const FileController = {
         if(err)
              console.log(req.file)
              
-        authJwt.verifyToken();
+        // let user = authJwt.getUser();
+        // console.log(typeof user._id);
+
         let newFile = new FileModel();
 
         newFile.title = req.file.originalname;
         newFile.myme_type = req.file.mymetype;
         newFile.size = req.file.size;
         newFile.path = req.file.path;
-        // newFile.owner = "5fb2d435b9994235b2ff3bb0";
+        //newFile.owner = user._id;
         // newFile.sharedWith = "5fad817859a3f34856217d9a";
         newFile.save()
 
-        // UserModel.findOneAndUpdate({_id: '5fb2d435b9994235b2ff3bb0'}, {$push: {files: newFile._id}}).exec()
+        UserModel.findOneAndUpdate({_id: user._id}, {$push: {files: newFile._id}}).exec()
 
 		res.end("File is uploaded");
     },
@@ -29,6 +31,7 @@ const FileController = {
             console.log(err)
         
         console.log(req.files)
+        let user = authJwt.getUser();
         let arrPath = []
         req.files.forEach(file => {
             let splitPath = file.originalname.split('/')
@@ -41,7 +44,7 @@ const FileController = {
                 newFile.size = file.size;
                 newFile.path = file.path;
                 newFile.originalPath = file.originalname;
-                newFile.owner = "5fb5a204bd2d646fb84ad4f7";
+                newFile.owner = user._id;
                 // newFile.sharedWith = "5fad817859a3f34856217d9a";
                 newFile.save()
             // }
@@ -57,7 +60,7 @@ const FileController = {
                         let newFolder = new FolderModel();
                         newFolder.name = folderName;
                         newFolder.path = folderPath
-                        newFolder.owner = "5fb5a204bd2d646fb84ad4f7";
+                        newFolder.owner = user._id;
                         // newFolder.subFolders = [];
                         newFolder.save();
                     }
@@ -70,7 +73,7 @@ const FileController = {
 		res.end("File is uploaded");
     },
     getUserFiles: async (req, res) => {
-        let user = await FileModel.find({owner: "5fb5a204bd2d646fb84ad4f7"}).populate('files')
+        let user = await FileModel.find({owner: user._id}).populate('files')
         res.json(user)
     }
 }
