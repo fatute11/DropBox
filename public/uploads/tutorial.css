@@ -1,0 +1,13 @@
+.Tutorial {margin:10px;}
+.Tutorial {line-height: 150%;}
+.Tutorial h1 {margin:0 0 20px;font-size:135%;clear:both;}
+.Tutorial h2 {margin:10px 0 20px;font-size:125%;border-bottom:1px solid #CECECE;clear:both;}
+.Tutorial h3 {margin:15px 0 15px;font-size:120%;clear:both;display:block;border-left:15px solid #CECECE;padding-left:5px;}
+.Tutorial h4 {margin:10px 0 10px;font-size:115%;clear:both;}
+.Tutorial p {margin:0 0 10px;}
+.Tutorial .Inline li {float:left;width:25%;}
+.Tutorial ul {margin:5px;list-style-position: inside;}
+ol {margin:5px;list-style-position: inside;}
+.ScreenConsole {margin:10px 0 10px; border:1px solid gray; background:black;padding:5px;color:white;}
+.Tutorial .ScreenEditor {margin:10px 0 10px; border:1px dashed gray; background:#ECECEC;padding:5px; }
+           

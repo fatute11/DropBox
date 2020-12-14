@@ -1,0 +1,17 @@
+<form id="uploadfolderForm"
+enctype="multipart/form-data"
+action="/upload-folder"
+method="post">
+<label for="files">Dossier</label>
+<input type="file" class="upload_directory" name="files" webkitdirectory mozdirectory name="userPhotoDirectory"/>
+<input type="submit" value="Upload Image" name="submit">
+</form>
+
+<form id="uploadFileForm"
+enctype="multipart/form-data"
+action="/upload-file"
+method="post">
+<label for="files">Fichier</label>
+<input type="file" class="upload_directory" name="files" name="userPhotoDirectory"/>
+<input type="submit" value="Upload Image" name="submit">
+</form>

@@ -38,6 +38,7 @@ app.use(routes)
 // routes
 require('./src/routes/auth.routes')(app);
 require('./src/routes/user.routes')(app);
+require('./src/routes/fileRoute')(app);
 
 // // replace the endpoint responsible for the GET requests
 // app.get('/', async (req, res) => {

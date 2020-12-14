@@ -6,16 +6,16 @@ const UserSchema = new Schema({
   username: {
       trim: true,
       type: String,
-      required: true,
+      //equired: true,
       lowercase: true,
   },
   email: {
       type: String,
-      required: true,
+      //required: true,
   },
   password: {
       type: String,
-      required: true,
+      //required: true,
   },
   passwordToken: {type: String},
   files:[{

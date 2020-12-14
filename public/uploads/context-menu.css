@@ -1,0 +1,83 @@
+.ContextMenu {margin-top:8px;margin-left:5px;}
+.ContextTabbedMenu {
+	position:relative;
+	border:none;
+	border:0px;
+	margin:0px;
+	padding:0px;
+	font-family:verdana,geneva,arial,helvetica,sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	color:8e8e8e;
+	}
+.ContextTabbedMenu ul{
+	background:url(img/menu-bg.gif) top left repeat-x;
+	height:43px;
+	list-style:none;
+	padding:0;
+}
+.ContextTabbedMenu li{
+	float:left;
+	list-style:none;
+}	
+.ContextTabbedMenu li a{
+	color:#666666;
+	display:block;
+	font-weight:bold;
+	line-height:43px;
+	padding:0px 25px;
+	text-align:center;
+	text-decoration:none;
+}
+.ContextTabbedMenu li ul{
+	background:#e0e0e0;
+	border-left:2px solid #056e86;
+	border-right:2px solid #056e86;
+	border-bottom:2px solid #056e86;
+	display:none;
+	height:auto;
+	position:absolute;
+	z-index:200;
+}
+.ContextTabbedMenu li ul li {
+	font-size:10px;
+	float:none;
+	height:auto;
+}
+.ContextTabbedMenu li:hover{background:url("img/current-bg.gif") top left repeat-x;}
+.ContextTabbedMenu li:hover a{color:white;height:15px;}
+.ContextTabbedMenu li:hover ul{
+	display:block;
+}
+.ContextTabbedMenu li:hover ul li{
+	height:15px;
+}
+.ContextTabbedMenu li:hover ul a{
+	text-align:left;
+	color:black;
+}
+.ContextTabbedMenu li ul li:hover{background:white;}
+		
+.ContextTabbedMenu #current{
+	background:url(img/current-bg.gif) top left repeat-x;
+	color:#ffffff;
+}
+
+.MenuStaticIndexWrapper{position:relative;}
+.StaticMenu{background: url(img/static_menu_bg.png) no-repeat;height:97px;}
+.StaticMenu a {color:#FFFFFF;text-decoration:none;}
+.StaticMenu a:hover{text-decoration:underline;}
+.StaticMenu ul {position:relative;top:10px;margin-left:25px;}
+.StaticMenu ul li {position:relative;left:15px;font-size:12px;float:left;width:50%;list-style-image:url("img/puce.png");}
+.StaticMenu ul li a{position:relative;left:-8px;top:-3px;}
+
+
+.MenuTitle{text-align:center;margin-top:10px;padding-top:7px;font-weight:bold;font-size:12px;color:white;height:30px;width:100%;background:url("img/menu_title3.png") no-repeat scroll center top transparent;}
+ul.menu{font-size:10px;padding-left:30px;list-style:none;margin-bottom:10px;}
+ul.menu li{position:relative;bottom:10px;margin-left:60px;list-style-image:url("img/puce.png");}
+
+
+
+
+li.actors_list a{background:#ffffff url('img/tools.png') no-repeat left top;color:red;padding-left:20px;font-size:12px;font-style:italic;}
+li.actors_add a{background:#ffffff url('img/user_add.png') no-repeat left top;padding-left:20px;font-size:12px;font-style:italic;}

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 // mongoose.Promise = global.Promise;
 require('dotenv').config()
+const Role = require('../models/roleModel')
 
 const db = {};
 
@@ -10,7 +11,7 @@ mongoose.connect(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${proc
   })
   .then(() => {
     console.log("Successfully connect to MongoDB.");
-    // initial();
+     initial();
   })
   .catch(err => {
     console.error("Connection error", err);
@@ -22,40 +23,40 @@ db.role = require("./roleModel");
 
 db.ROLES = ["user", "admin", "moderateur"];
 
-// function initial() {
-//     db.role.estimatedDocumentCount((err, count) => {
-//     if (!err && count === 0) {
-//       new Role({
-//         name: "user"
-//       }).save(err => {
-//         if (err) {
-//           console.log("error", err);
-//         }
+function initial() {
+    db.role.estimatedDocumentCount((err, count) => {
+    if (!err && count === 0) {
+      new Role({
+        name: "user"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
 
-//         console.log("added 'user' to roles collection");
-//       });
+        console.log("added 'user' to roles collection");
+      });
 
-//       new Role({
-//         name: "moderator"
-//       }).save(err => {
-//         if (err) {
-//           console.log("error", err);
-//         }
+      new Role({
+        name: "moderator"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
 
-//         console.log("added 'moderator' to roles collection");
-//       });
+        console.log("added 'moderator' to roles collection");
+      });
 
-//       new Role({
-//         name: "admin"
-//       }).save(err => {
-//         if (err) {
-//           console.log("error", err);
-//         }
+      new Role({
+        name: "admin"
+      }).save(err => {
+        if (err) {
+          console.log("error", err);
+        }
 
-//         console.log("added 'admin' to roles collection");
-//       });
-//     }
-//   });
-// }
+        console.log("added 'admin' to roles collection");
+      });
+    }
+  });
+}
 
 module.exports = db;
