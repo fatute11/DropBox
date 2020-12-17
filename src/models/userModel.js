@@ -17,7 +17,9 @@ const UserSchema = new Schema({
       type: String,
       //required: true,
   },
-  passwordToken: {type: String},
+  passwordToken: {
+      type: String,
+    },
   files:[{
       type: Schema.Types.ObjectId,
       ref: 'File'

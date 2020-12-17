@@ -1,3 +1,6 @@
+const db = require("../models");
+const User = db.user;
+
 exports.allAccess = (req, res) => {
     res.status(200).send("contenu publique.");
   };
@@ -13,3 +16,12 @@ exports.allAccess = (req, res) => {
   exports.moderatorBoard = (req, res) => {
     res.status(200).send("contenu du moderateur.");
   };
+
+  exports.getUserByPasswordToken = (req, res) => {
+    User.findOne({passwordToken: req.query.passwordToken}).then(user => {
+      if (!user){
+        return 'Aucun utilisateur trouvé avec ce token'
+      }
+
+    })
+  }

@@ -11,7 +11,7 @@ const {insertAd, getAds} = require('./src/database/ads');
 const app = express()
 
 var corsOptions = {
-    origin: "http://localhost:8081"
+    origin: "http://localhost:3000"
   };
 
 const port = process.env.PORT || 8020; 
@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(routes)
-
+app.set('view engine', 'ejs');
 // routes
 require('./src/routes/auth.routes')(app);
 require('./src/routes/user.routes')(app);
