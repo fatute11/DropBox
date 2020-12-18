@@ -91,8 +91,9 @@ exports.signin = (req, res) => {
       var token = jwt.sign({ id: user.id }, process.env.ACCESS_TOKEN_SECRET, {
         expiresIn: process.env.ACCESS_TOKEN_LIFE // 24 hours
       });
-
+      console.log(token.expiresIn)
       var authorities = [];
+
 
       for (let i = 0; i < user.roles.length; i++) {
         authorities.push("ROLE_" + user.roles[i].name.toUpperCase());

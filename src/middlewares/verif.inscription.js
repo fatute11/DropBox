@@ -13,7 +13,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
     }
 
     if (user) {
-      res.status(400).send({ message: "le nom d'utilisateur exist, essayez un nouveau!" });
+      res.status(400).send({ message: "le nom d'utilisateur existe, essayez un nouveau!" });
       return;
     }
 
