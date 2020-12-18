@@ -30,6 +30,7 @@ const FileController = {
         if(err)
             console.log(err)
         
+
         // console.log(req.files)
         //let user = authJwt.getUser();
         let arrPath = []
@@ -45,6 +46,7 @@ const FileController = {
                 newFile.path = file.path;
                 newFile.originalPath = file.originalname;
                 // newFile.owner = user._id;
+
                 // newFile.sharedWith = "5fad817859a3f34856217d9a";
                 newFile.save()
             // }

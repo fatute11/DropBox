@@ -17,7 +17,9 @@ mongoose.connect(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${proc
     console.error("Connection error", err);
     process.exit();
   });
+
 mongoose.set('useFindAndModify', false);
+
 db.user = require("./userModel");
 db.role = require("./roleModel");
 

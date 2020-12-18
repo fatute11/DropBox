@@ -27,4 +27,5 @@ module.exports = function(app) {
   );
 
   app.get("/api/user/password-token", controller.getUserByPasswordToken)
+
 };

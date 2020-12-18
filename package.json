@@ -30,9 +30,15 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "nodemailer": "^6.4.17"
+
   },
   "bugs": {
     "url": "https://github.com/fatute11/DropBox/issues"
   },
-  "homepage": "https://github.com/fatute11/DropBox#readme"
+
+  "homepage": "https://github.com/fatute11/DropBox#readme",
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
+  }
 }

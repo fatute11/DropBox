@@ -17,9 +17,7 @@ const UserSchema = new Schema({
       type: String,
       //required: true,
   },
-  passwordToken: {
-      type: String,
-    },
+  passwordToken: {type: String},
   files:[{
       type: Schema.Types.ObjectId,
       ref: 'File'
@@ -45,21 +43,3 @@ const UserSchema = new Schema({
 }, { timestamps: true })
 
 module.exports = mongoose.model('User', UserSchema);
-
-// module.exports = mongoose.model('User', UserSchema);
-// const User = mongoose.model(
-//   "User",
-//   new mongoose.Schema({
-//     username: String,
-//     email: String,
-//     password: String,
-//     roles: [
-//       {
-//         type: mongoose.Schema.Types.ObjectId,
-//         ref: "Role"
-//       }
-//     ]
-//   })
-// );
-
-// module.exports = User;

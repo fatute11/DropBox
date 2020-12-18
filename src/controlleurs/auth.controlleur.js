@@ -7,12 +7,14 @@ let bcrypt = require("bcryptjs");
 let crypto = require("crypto");
 let  mailerService = require("../services/nodemailer/mailerService")
 
+
 exports.signup = (req, res) => {
   const user = new User({
     username: req.body.username,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8),
     passwordToken: ""
+
   });
 
   user.save((err, user) => {
@@ -79,7 +81,9 @@ exports.signin = (req, res) => {
         return res.status(404).send({ message: "utilisateur non trouver." });
       }
 
+
       var passwordIsValid = bcrypt.compareSync(
+
         req.body.password,
         user.password
       );
@@ -110,8 +114,8 @@ exports.signin = (req, res) => {
     });
 };
 
-const AuthController = {
-  forgotPassword: (req, res) => {
+
+exports.forgotPassword = (req, res) => {
 
     const email = req.body.email
   
@@ -130,11 +134,11 @@ const AuthController = {
 
       res.send({status: 200, message: 'ok'})
     })
-  },
-  updatePassword: (req,res) => {
+  };
+
+  exports.updatePassword = (req,res) => {
     const password = bcrypt.hashSync(req.body.password, 8)
     User.findByIdAndUpdate({_id:req.body.id}, {$set:{password: password}}).exec();
-  }
-}
+  };
 
-module.exports = AuthController;
+
