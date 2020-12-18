@@ -110,8 +110,8 @@ exports.signin = (req, res) => {
     });
 };
 
-const AuthController = {
-  forgotPassword: (req, res) => {
+// const AuthController = {
+  exports.forgotPassword = (req, res) => {
 
     const email = req.body.email
   
@@ -131,10 +131,10 @@ const AuthController = {
       res.send({status: 200, message: 'ok'})
     })
   },
-  updatePassword: (req,res) => {
+  exports.updatePassword = (req,res) => {
     const password = bcrypt.hashSync(req.body.password, 8)
     User.findByIdAndUpdate({_id:req.body.id}, {$set:{password: password}}).exec();
   }
-}
+// }
 
-module.exports = AuthController;
+// module.exports = AuthController;

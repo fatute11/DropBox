@@ -10,16 +10,16 @@ module.exports = function(app) {
     next();
   });
 
-  // app.post(
-  //   "/api/auth/signup",
-  //   [
-  //     verifySignUp.checkDuplicateUsernameOrEmail,
-  //     verifySignUp.checkRolesExisted
-  //   ],
-  //   controlleur.signup
-  // );
+  app.post(
+    "/api/auth/signup",
+    [
+      verifySignUp.checkDuplicateUsernameOrEmail,
+      verifySignUp.checkRolesExisted
+    ],
+    controlleur.signup
+  );
 
-  // app.post("/api/auth/signin", controlleur.signin);
+  app.post("/api/auth/signin", controlleur.signin);
 
   app.post("/forgot-password", controlleur.forgotPassword);
   app.post("/reset-password", controlleur.updatePassword)
