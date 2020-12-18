@@ -20,8 +20,8 @@ exports.allAccess = (req, res) => {
   exports.getUserByPasswordToken = (req, res) => {
     User.findOne({passwordToken: req.query.passwordToken}).then(user => {
       if (!user){
-        return 'Aucun utilisateur trouvé avec ce token'
+        res.send({error:'Invalid token',message: 'le token est invalid'})
       }
-
+      res.send(user)
     })
   }

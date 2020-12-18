@@ -21,5 +21,6 @@ module.exports = function(app) {
 
   // app.post("/api/auth/signin", controlleur.signin);
 
-  app.post("/forgot-password", controlleur.reset);
+  app.post("/forgot-password", controlleur.forgotPassword);
+  app.post("/reset-password", controlleur.updatePassword)
 };
