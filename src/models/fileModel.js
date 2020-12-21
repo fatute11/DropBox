@@ -15,7 +15,7 @@ const FileSchema = new Schema({
     },
     size: {
         type: String,
-        required: true,
+        //required: true,
     },
     originalPath: {
         type: String,

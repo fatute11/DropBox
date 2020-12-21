@@ -6,6 +6,7 @@ const getFileName = (originalename) => {
 }
 
 const storage =	multer.diskStorage({
+  
     destination: function (req, file, callback) {
 
       callback(null, './public/uploads');
@@ -16,4 +17,4 @@ const storage =	multer.diskStorage({
 });
 
   
-  module.exports = multer({ storage : storage, preservePath: true}).array('files');
+  module.exports = multer({ storage : storage, preservePath: true}).array('file');
