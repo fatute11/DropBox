@@ -1,7 +1,8 @@
+const cors = require("cors");
 const express = require('express')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const routes = require('./src/routes')
-const cors = require("cors");
 
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -25,6 +26,7 @@ const ads = [
 // Middelware
 app.use(express.static(www));
 app.use(cors(corsOptions));
+app.use(cookieParser())
 // adding Helmet to enhance your API's security
 app.use(helmet());
 // adding morgan to log HTTP requests

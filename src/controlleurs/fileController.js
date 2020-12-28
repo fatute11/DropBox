@@ -5,35 +5,34 @@ const authJwt = require('../middlewares/authJwt')
 
 
 const FileController = {
-    uploadFile: (req, res, err) => {
-        if(err)
-    console.log(req.file)
+    // uploadFile: (req, res, err) => {
+    //     if(err)
+    // console.log(req.file)
              
-        // let user = authJwt.getUser();
-        // console.log(typeof user._id);
+    //     // let user = authJwt.getUser();
+    //     // console.log(typeof user._id);
 
-        let newFile = new FileModel();
+    //     let newFile = new FileModel();
 
-        newFile.title = req.file.originalname;
-        newFile.mimeType = req.file.mimetype;
-        newFile.size = req.file.size;
-        newFile.path = req.file.path;
-        newFile.owner = "5fd9d44c07ab7c197effbf67";
-        // newFile.sharedWith = "5fad817859a3f34856217d9a";
-        newFile.save()
+    //     newFile.title = req.file.originalname;
+    //     newFile.mimeType = req.file.mimetype;
+    //     newFile.size = req.file.size;
+    //     newFile.path = req.file.path;
+    //     newFile.owner = "5fd9d44c07ab7c197effbf67";
+    //     // newFile.sharedWith = "5fad817859a3f34856217d9a";
+    //     newFile.save()
 
-        UserModel.findOneAndUpdate({_id: "5fd9d44c07ab7c197effbf67"}, {$push: {files: newFile._id}}).exec()
+    //     UserModel.findOneAndUpdate({_id: "5fd9d44c07ab7c197effbf67"}, {$push: {files: newFile._id}}).exec()
 
-		res.end("File is uploaded");
-    },
+	// 	res.end("File is uploaded");
+    // },
     uploadFolder: (req, res, err) => {
         if(err)
             console.log(err)
 
-            //let user = authJwt.getUser();
+        let user = req.body.user;
         let arrPath = []
         console.log(req.files)
-
         req.files.forEach(file => {
             let splitPath = file.path.split('/')
             let fileName = splitPath[splitPath.length -1]
@@ -45,8 +44,7 @@ const FileController = {
                 newFile.size = file.size;
                 newFile.path = file.path;
                 newFile.originalPath = file.originalname;
-                // newFile.owner = user._id;
-                newFile.owner ="5fd9d44c07ab7c197effbf67";
+                newFile.owner = user;
 
                 // newFile.sharedWith = "5fad817859a3f34856217d9a";
                 newFile.save()
@@ -63,7 +61,7 @@ const FileController = {
                         let newFolder = new FolderModel();
                         newFolder.name = folderName;
                         newFolder.path = folderPath
-                        newFolder.owner = "5fd9d44c07ab7c197effbf67";
+                        newFolder.owner = user;
                         // newFolder.subFolders = [];
                         newFolder.save();
                     }
@@ -72,14 +70,13 @@ const FileController = {
             // if (typeof newFile !== 'undefined') {
             // addFilesToFolder(folderPath, newFile)
             // }
-            UserModel.findOneAndUpdate({_id: "5fd9d44c07ab7c197effbf67"}, {$push: {files: newFile._id}}).exec()
+            UserModel.findOneAndUpdate({_id: user}, {$push: {files: newFile._id}}).exec()
 
         });
 		res.end("File is uploaded");
     },
     getUserFiles: async (req, res) => {
-        let user = await FileModel.find({owner: "5fd9d44c07ab7c197effbf67"}).populate('files')
-        // let user = await FileModel.find({owner: user._id}).populate('files')
+        let user = await FileModel.find({owner: req.userId}).populate('files').exec()    
         res.json(user)
     }
 }

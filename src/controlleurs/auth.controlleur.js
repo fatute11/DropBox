@@ -120,7 +120,6 @@ exports.forgotPassword = (req, res) => {
     const email = req.body.email
   
     User.findOne({email: email}).then(user => {
-      console.log(user)
       if (!user){
         res.send({status: 404, error:'user not find', message:'Aucun utilisateur trouvé avec cette adresse'})
       }
