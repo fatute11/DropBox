@@ -15,7 +15,7 @@ const FileSchema = new Schema({
     },
     size: {
         type: String,
-        required: true,
+        //required: true,
     },
     originalPath: {
         type: String,
@@ -33,6 +33,10 @@ const FileSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
+    isFavoris:{
+        type: Boolean,
+        default: false,
+    },
 }, { timestamps: true })
 
 

@@ -1,8 +1,14 @@
+const cors = require("cors");
 const express = require('express')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const routes = require('./src/routes')
+
 const cors = require("cors");
 const multer = require("multer");
+
+
+
 const helmet = require('helmet');
 const morgan = require('morgan');
 const {startDatabase} = require('./src/database/mongo');
@@ -21,7 +27,9 @@ let storage = multer.diskStorage({
 });
 
 var corsOptions = {
-  origin: "http://localhost:3000"
+    credentials: true,
+    origin: "http://localhost:3000"
+
   };
 
 const port = process.env.PORT || 8020; 
@@ -32,9 +40,22 @@ const ads = [
   {title: 'Hello, world (again)!'}
 ];
 
+app.use(function(req, res, next) {
+    res.header(
+      // "Access-Control-Allow-Headers",
+      // "x-access-token, Origin, Content-Type, Accept",
+      'Access-Control-Expose-Headers', 'Access-Control-Allow-Origin',
+      'Access-Control-Allow-Origin', 'http://localhost:3000',
+      'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept',
+      'Access-Control-Allow-Credentials', true
+    );
+    next();
+  });
+
 // Middelware
 app.use(express.static(www));
 app.use(cors(corsOptions));
+app.use(cookieParser())
 // adding Helmet to enhance your API's security
 app.use(helmet());
 // adding morgan to log HTTP requests

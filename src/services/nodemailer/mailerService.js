@@ -17,7 +17,7 @@ async function sendForgotPassword(token, email) {
         from: '"L\'Équipe Projet Dropbox" <no-reply@dropbox-project.com>', 
         to: email, 
         subject: "Changez votre mot de passe Dropbox-project", 
-        html: await ejs.renderFile(appDir+'/public/forgot-password.ejs', { link: token }, 'utf8')
+        html: await ejs.renderFile(appDir+'/views/forgot-password.ejs', { link: token }, 'utf8')
     });
 }
 
