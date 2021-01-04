@@ -2,13 +2,23 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const routes = require('./src/routes')
 const cors = require("cors");
-
+const multer = require("multer");
 const helmet = require('helmet');
 const morgan = require('morgan');
 const {startDatabase} = require('./src/database/mongo');
 const {insertAd, getAds} = require('./src/database/ads');
 
 const app = express()
+
+let storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, __basedir + "/resources/static/assets/uploads/");
+  },
+  filename: (req, file, cb) => {
+    console.log(file.originalname);
+    cb(null, file.originalname);
+  },
+});
 
 var corsOptions = {
   origin: "http://localhost:3000"
