@@ -9,11 +9,10 @@ module.exports = function(app) {
       'Access-Control-Expose-Headers', 'Access-Control-Allow-Origin',
       'Access-Control-Allow-Origin', 'http://localhost:3000',
       'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept',
-      'Access-Control-Allow-Credentials', 'true'
+      'Access-Control-Allow-Credentials', true
     );
     next();
   });
-
 
   app.post(
     "/api/auth/signup",

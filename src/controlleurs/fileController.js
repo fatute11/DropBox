@@ -76,8 +76,42 @@ const FileController = {
 		res.end("File is uploaded");
     },
     getUserFiles: async (req, res) => {
-        let user = await FileModel.find({owner: req.userId}).populate('files').exec()    
+        let user = await FileModel.find({owner: req.userId}).populate('files').exec() 
+        res.header(
+            // "Access-Control-Allow-Headers",
+            // "x-access-token, Origin, Content-Type, Accept",
+            'Access-Control-Expose-Headers', 'Access-Control-Allow-Origin',
+            'Access-Control-Allow-Origin', 'http://localhost:3000',
+            'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept',
+            'Access-Control-Allow-Credentials', true
+          );   
         res.json(user)
+    },
+    getFavoritesFiles: async (req, res) => {
+        let user = await FileModel.find({owner: req.userId, isFavoris: true}).populate('files').exec() 
+        res.header(
+            // "Access-Control-Allow-Headers",
+            // "x-access-token, Origin, Content-Type, Accept",
+            'Access-Control-Expose-Headers', 'Access-Control-Allow-Origin',
+            'Access-Control-Allow-Origin', 'http://localhost:3000',
+            'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept',
+            'Access-Control-Allow-Credentials', true
+          );   
+        res.json(user)
+    },
+    addFavoritesFile: async (req, res) => {
+        console.log(req.body.file._id)
+        let data = (req.body.file.isFavoris === true) ? false : true        
+        return await FileModel.findOneAndUpdate({_id: req.body.file._id}, {$set: {isFavoris: data}}).exec() 
+        // res.header(
+        //     // "Access-Control-Allow-Headers",
+        //     // "x-access-token, Origin, Content-Type, Accept",
+        //     'Access-Control-Expose-Headers', 'Access-Control-Allow-Origin',
+        //     'Access-Control-Allow-Origin', 'http://localhost:3000',
+        //     'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept',
+        //     'Access-Control-Allow-Credentials', true
+        //   );   
+        // res.json(user)
     }
 }
 

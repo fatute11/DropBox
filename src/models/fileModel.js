@@ -33,6 +33,10 @@ const FileSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
+    isFavoris:{
+        type: Boolean,
+        default: false,
+    },
 }, { timestamps: true })
 
 
